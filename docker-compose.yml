@@ -1,0 +1,12 @@
+version: "3.0"
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/var/www/code
+    entrypoint: /var/www/code/docker/entrypoint.sh
+#    command: python main.py
