@@ -8,7 +8,7 @@ from loguru import logger
 
 class Game(GameABC):
 
-    def __init__(self, armies: List[Dict[str, Any]]):
+    def __init__(self, armies: List[Dict[str, Any]]) -> None:
         self.armies = armies
 
     def play(self) -> int:
@@ -35,12 +35,13 @@ class Game(GameABC):
                                           defending_army_index)
 
             # getting attack
-            attack_class: Type[AttackABC] = \
-                self.armies[attacking_army_index]['attack']
-            attack = attack_class()
+            # attack_class: Type[AttackABC] = \
+            #     self.armies[attacking_army_index]['attack']
+            # attack = attack_class()
 
             # attacking and getting "army_was_killed" status
-            army_was_killed = attack.attack(attacking_army, defending_army)
+            # army_was_killed = attack.attack(attacking_army, defending_army)
+            army_was_killed = attacking_army.attack(defending_army)
             if army_was_killed:
                 self.armies.pop(defending_army_index)
 

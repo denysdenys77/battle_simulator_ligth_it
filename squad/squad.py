@@ -7,7 +7,7 @@ from typing import List
 class Squad(SquadABC):
     geometric_helper = GeometricHelper()
 
-    def __init__(self, units: List[WarringABC]):
+    def __init__(self, units: List[WarringABC]) -> None:
         self._units = units
 
     def attack(self) -> float:

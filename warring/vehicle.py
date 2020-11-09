@@ -1,15 +1,14 @@
 from warring.interface import WarringABC
 from utils.geometric_average_helper import GeometricHelper
-from random import randint, choice
-from typing import Type, List
+from random import choice
+from typing import List
 
 
 class Vehicle(WarringABC):
     geometric_helper = GeometricHelper()
 
-    def __init__(self, soldier_class: Type[WarringABC]):
-        self._soldier_class = soldier_class
-        self._operators: list = self._set_operators()
+    def __init__(self, soldiers: List[WarringABC]) -> None:
+        self._operators: list = soldiers
         self._health: float = 100.0 + 100.0 * len(self._operators)
 
     def attack(self) -> float:
@@ -46,10 +45,6 @@ class Vehicle(WarringABC):
         """Reduces the number of experience points for each operator."""
         for operator in self._operators:
             operator.attack_status(success)
-
-    def _set_operators(self) -> List[WarringABC]:
-        """Generate random number of vehicle operators."""
-        return [self._soldier_class() for _ in list(range(randint(1, 3)))]
 
     def _attack_operators(self, sed_operator_damage: float,
                           rest_operators_damage: float) -> None:

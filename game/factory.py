@@ -22,11 +22,14 @@ class GameFactory:
             raise Exception('Missing required "attack_strategy" parameter.')
 
         if 2 <= number_of_armies:
-            armies_list = [{'army': self.army_factory.create(_,
-                                                             number_of_squads,
-                                                             number_of_units),
-                            'attack': self.attack_factory.create(attack_strategy)}
-                           for _ in range(number_of_armies)]
+            armies_list = [
+                {'army': self.army_factory.create(
+                    _,
+                    number_of_squads,
+                    number_of_units,
+                    self.attack_factory.create(attack_strategy))}
+                for _ in range(number_of_armies)
+            ]
 
             logger.info(armies_list)
 
@@ -49,11 +52,14 @@ class RandomArmyAttackStrategyGameFactory:
         """
 
         if 2 <= number_of_armies:
-            armies_list = [{'army': self.army_factory.create(_,
-                                                             number_of_squads,
-                                                             number_of_units),
-                            'attack': self.random_attack_factory.create()}
-                           for _ in range(number_of_armies)]
+            armies_list = [
+                {'army': self.army_factory.create(
+                    _,
+                    number_of_squads,
+                    number_of_units,
+                    self.random_attack_factory.create())}
+                for _ in range(number_of_armies)
+            ]
 
             logger.info(armies_list)
 

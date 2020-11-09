@@ -1,3 +1,5 @@
+from random import randint
+
 from warring.interface import WarringABC
 from warring.soldier import Soldier
 from warring.vehicle import Vehicle
@@ -10,7 +12,7 @@ class UnitFactory:
 
         units = {
             'soldier': Soldier(),
-            'vehicle': Vehicle(Soldier)
+            'vehicle': Vehicle([Soldier() for _ in list(range(randint(1, 3)))])
         }
 
         if unit_type in units.keys():

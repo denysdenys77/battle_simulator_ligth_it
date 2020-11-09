@@ -11,7 +11,7 @@ Possible choice of attack strategy /per army/: random|weakest|strongest.
 
 def main_game():
     game_factory = GameFactory()
-    game = game_factory.create(number_of_armies=5,
+    game = game_factory.create(number_of_armies=2,
                                number_of_squads=2,
                                number_of_units=5,
                                attack_strategy='strongest')
