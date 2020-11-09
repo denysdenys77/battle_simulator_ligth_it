@@ -1,5 +1,5 @@
-from factories.game_factory import GameFactory
-from factories.game_factory import RandomArmyAttackStrategyGameFactory
+from game.factory import GameFactory
+from game.factory import RandomArmyAttackStrategyGameFactory
 
 """
 Possible number of armies in game: 2 <= n.
@@ -10,18 +10,20 @@ Possible choice of attack strategy /per army/: random|weakest|strongest.
 
 
 def main_game():
-    game = GameFactory.create(number_of_armies=5,
-                              number_of_squads=2,
-                              number_of_units=5,
-                              attack_strategy='strongest')
+    game_factory = GameFactory()
+    game = game_factory.create(number_of_armies=5,
+                               number_of_squads=2,
+                               number_of_units=5,
+                               attack_strategy='strongest')
     print(game.play())
 
 
 def main_per_army_attack_strategy_game():
-    game = RandomArmyAttackStrategyGameFactory.create(number_of_armies=5,
-                                                      number_of_squads=2,
-                                                      number_of_units=5,
-                                                      attack_strategy='strongest')
+    random_army_attack_strategy_game_factory = RandomArmyAttackStrategyGameFactory()
+    game = random_army_attack_strategy_game_factory.create(number_of_armies=5,
+                                                           number_of_squads=2,
+                                                           number_of_units=5,
+                                                           attack_strategy='strongest')
     print(game.play())
 
 

@@ -1,15 +1,17 @@
-from interfaces.game_interface import GameABC
-from realisations.game import Game
-from .army_factory import ArmyFactory
-from .attack_factory import AttackFactory, RandomAttackFactory
+from game.interface import GameABC
+from game.game import Game
+from army.factory import ArmyFactory
+from attack.factory import AttackFactory, RandomAttackFactory
 from loguru import logger
 from typing import Union
 
 
 class GameFactory:
+    army_factory = ArmyFactory()
+    attack_factory = AttackFactory()
 
-    @staticmethod
-    def create(number_of_armies: int,
+    def create(self,
+               number_of_armies: int,
                number_of_squads: int,
                number_of_units: int,
                **kwargs) -> GameABC:
@@ -20,10 +22,10 @@ class GameFactory:
             raise Exception('Missing required "attack_strategy" parameter.')
 
         if 2 <= number_of_armies:
-            armies_list = [{'army': ArmyFactory.create(_,
-                                                       number_of_squads,
-                                                       number_of_units),
-                            'attack': AttackFactory.create(attack_strategy)}
+            armies_list = [{'army': self.army_factory.create(_,
+                                                             number_of_squads,
+                                                             number_of_units),
+                            'attack': self.attack_factory.create(attack_strategy)}
                            for _ in range(number_of_armies)]
 
             logger.info(armies_list)
@@ -33,9 +35,11 @@ class GameFactory:
 
 
 class RandomArmyAttackStrategyGameFactory:
+    army_factory = ArmyFactory()
+    random_attack_factory = RandomAttackFactory()
 
-    @staticmethod
-    def create(number_of_armies: int,
+    def create(self,
+               number_of_armies: int,
                number_of_squads: int,
                number_of_units: int,
                **kwargs) -> GameABC:
@@ -45,10 +49,10 @@ class RandomArmyAttackStrategyGameFactory:
         """
 
         if 2 <= number_of_armies:
-            armies_list = [{'army': ArmyFactory.create(_,
-                                                       number_of_squads,
-                                                       number_of_units),
-                            'attack': RandomAttackFactory.create()}
+            armies_list = [{'army': self.army_factory.create(_,
+                                                             number_of_squads,
+                                                             number_of_units),
+                            'attack': self.random_attack_factory.create()}
                            for _ in range(number_of_armies)]
 
             logger.info(armies_list)

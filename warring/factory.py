@@ -1,12 +1,11 @@
-from interfaces.warring_interface import WarringABC
-from realisations.soldier import Soldier
-from realisations.vehicle import Vehicle
+from warring.interface import WarringABC
+from warring.soldier import Soldier
+from warring.vehicle import Vehicle
 
 
 class UnitFactory:
 
-    @staticmethod
-    def create(unit_type: str) -> WarringABC:
+    def create(self, unit_type: str) -> WarringABC:
         """Returning unit instance of specified unit type"""
 
         units = {

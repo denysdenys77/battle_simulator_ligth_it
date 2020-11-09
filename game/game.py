@@ -1,6 +1,6 @@
-from interfaces.game_interface import GameABC
-from interfaces.army_interface import ArmyABC
-from interfaces.attack_interface import AttackABC
+from game.interface import GameABC
+from army.interface import ArmyABC
+from attack.interface import AttackABC
 from typing import Tuple, List, Dict, Any, Type
 
 from loguru import logger

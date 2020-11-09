@@ -1,10 +1,11 @@
-from interfaces.squard_interface import SquadABC
-from interfaces.warring_interface import WarringABC
-from helpers.geometric_average_helper import GeometricHelper
+from squad.interface import SquadABC
+from warring.interface import WarringABC
+from utils.geometric_average_helper import GeometricHelper
 from typing import List
 
 
 class Squad(SquadABC):
+    geometric_helper = GeometricHelper()
 
     def __init__(self, units: List[WarringABC]):
         self._units = units
@@ -12,7 +13,7 @@ class Squad(SquadABC):
     def attack(self) -> float:
         """Returns attack success probability of a squad."""
         units_attack_success = [unit.attack() for unit in self._units]
-        return GeometricHelper.get_geometric_average(units_attack_success)
+        return self.geometric_helper.get_geometric_average(units_attack_success)
 
     def damage(self) -> float:
         """Returns amount of damage a squad can afflict."""

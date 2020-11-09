@@ -1,5 +1,5 @@
-from interfaces.army_interface import ArmyABC
-from interfaces.squard_interface import SquadABC
+from army.interface import ArmyABC
+from squad.interface import SquadABC
 from typing import List
 
 

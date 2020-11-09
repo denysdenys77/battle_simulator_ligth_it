@@ -1,10 +1,11 @@
-from interfaces.warring_interface import WarringABC
-from helpers.geometric_average_helper import GeometricHelper
+from warring.interface import WarringABC
+from utils.geometric_average_helper import GeometricHelper
 from random import randint, choice
 from typing import Type, List
 
 
 class Vehicle(WarringABC):
+    geometric_helper = GeometricHelper()
 
     def __init__(self, soldier_class: Type[WarringABC]):
         self._soldier_class = soldier_class
@@ -16,8 +17,7 @@ class Vehicle(WarringABC):
         operators_attack_success = [float(operator.attack())
                                     for operator in self._operators]
         return (0.5 * (1 + self._health / 100) *
-                GeometricHelper.get_geometric_average(
-                    operators_attack_success))
+                self.geometric_helper.get_geometric_average(operators_attack_success))
 
     def damage(self) -> float:
         """Returns amount of damage a vehicle can afflict."""

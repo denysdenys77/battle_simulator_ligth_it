@@ -1,4 +1,4 @@
-from interfaces.squard_interface import SquadABC
+from squad.interface import SquadABC
 from abc import ABC
 from typing import List
 

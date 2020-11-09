@@ -1,13 +1,13 @@
-from interfaces.squard_interface import SquadABC
-from realisations.squad import Squad
-from .unit_factory import UnitFactory
+from squad.interface import SquadABC
+from squad.squad import Squad
+from warring.factory import UnitFactory
 from random import choice
 
 
 class SquadFactory:
+    unit_factory = UnitFactory()
 
-    @staticmethod
-    def create(number_of_units: int) -> SquadABC:
+    def create(self, number_of_units: int) -> SquadABC:
         """
         Creating an army class instance
         with specified count of units.
@@ -18,7 +18,7 @@ class SquadFactory:
         if 5 <= number_of_units <= 10:
             for _ in range(number_of_units):
                 unit_type = choice(unit_types)
-                unit = UnitFactory.create(unit_type=unit_type)
+                unit = self.unit_factory.create(unit_type=unit_type)
                 units_list.append(unit)
             return Squad(units=units_list)
         raise Exception('Possible number of '

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .army_interface import ArmyABC
+from army.interface import ArmyABC
 
 
 class AttackABC(ABC):

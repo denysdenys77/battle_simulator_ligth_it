@@ -1,4 +1,4 @@
-from interfaces.warring_interface import WarringABC
+from warring.interface import WarringABC
 from random import randint
 
 

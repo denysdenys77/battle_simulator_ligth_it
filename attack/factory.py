@@ -1,15 +1,14 @@
-from interfaces.attack_interface import AttackABC
-from realisations.attacks import (OnStrongestAttack,
-                                  OnWeakestAttack,
-                                  RandomAttack)
+from attack.interface import AttackABC
+from attack.attacks import (OnStrongestAttack,
+                            OnWeakestAttack,
+                            RandomAttack)
 from typing import Type
 from random import choice
 
 
 class AttackFactory:
 
-    @staticmethod
-    def create(attack_strategy: str) -> Type[AttackABC]:
+    def create(self, attack_strategy: str) -> Type[AttackABC]:
         """Returning a Attack class of specified type."""
         attack_strategies = {
             'strongest': OnStrongestAttack,
@@ -26,8 +25,7 @@ class AttackFactory:
 
 class RandomAttackFactory:
 
-    @staticmethod
-    def create() -> Type[AttackABC]:
+    def create(self) -> Type[AttackABC]:
         """Returning a Attack class of random type."""
         attack_strategies = [OnStrongestAttack, OnWeakestAttack, RandomAttack]
         return choice(attack_strategies)
