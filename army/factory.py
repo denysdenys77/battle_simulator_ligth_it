@@ -1,5 +1,5 @@
 from army.interface import ArmyABC
-from army.army import Army
+from army.army_realization import Army
 from squad.factory import SquadFactory
 from attack.interface import AttackABC
 from typing import Type
@@ -18,5 +18,7 @@ class ArmyFactory:
         if 2 <= number_of_squads:
             squads_list = [self.squad_factory.create(number_of_units)
                            for _ in range(number_of_squads)]
-            return Army(name_number=army_name_number, squads=squads_list, attack=attack)
+            return Army(name_number=army_name_number,
+                        squads=squads_list,
+                        attack=attack)
         raise Exception('Possible number of squads per army: 2 <= n.')

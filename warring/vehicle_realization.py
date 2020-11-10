@@ -16,7 +16,8 @@ class Vehicle(WarringABC):
         operators_attack_success = [float(operator.attack())
                                     for operator in self._operators]
         return (0.5 * (1 + self._health / 100) *
-                self.geometric_helper.get_geometric_average(operators_attack_success))
+                self.geometric_helper.get_geometric_average(
+                    operators_attack_success))
 
     def damage(self) -> float:
         """Returns amount of damage a vehicle can afflict."""

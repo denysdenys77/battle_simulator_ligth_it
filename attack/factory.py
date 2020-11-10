@@ -1,7 +1,7 @@
 from attack.interface import AttackABC
-from attack.attacks import (OnStrongestAttack,
-                            OnWeakestAttack,
-                            RandomAttack)
+from attack.attacks_realizations import (OnStrongestAttack,
+                                         OnWeakestAttack,
+                                         RandomAttack)
 from typing import Type
 from random import choice
 

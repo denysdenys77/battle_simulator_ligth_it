@@ -1,7 +1,6 @@
 from game.interface import GameABC
 from army.interface import ArmyABC
-from attack.interface import AttackABC
-from typing import Tuple, List, Dict, Any, Type
+from typing import Tuple, List, Dict, Any
 
 from loguru import logger
 
@@ -33,11 +32,6 @@ class Game(GameABC):
             attacking_army, defending_army = \
                 self._get_fighting_armies(attacking_army_index,
                                           defending_army_index)
-
-            # getting attack
-            # attack_class: Type[AttackABC] = \
-            #     self.armies[attacking_army_index]['attack']
-            # attack = attack_class()
 
             # attacking and getting "army_was_killed" status
             # army_was_killed = attack.attack(attacking_army, defending_army)

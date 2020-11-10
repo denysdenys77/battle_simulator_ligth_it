@@ -1,5 +1,5 @@
 from game.interface import GameABC
-from game.game import Game
+from game.game_realization import Game
 from army.factory import ArmyFactory
 from attack.factory import AttackFactory, RandomAttackFactory
 from loguru import logger

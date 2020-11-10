@@ -1,8 +1,8 @@
 from random import randint
 
 from warring.interface import WarringABC
-from warring.soldier import Soldier
-from warring.vehicle import Vehicle
+from warring.soldier_realization import Soldier
+from warring.vehicle_realization import Vehicle
 
 
 class UnitFactory:

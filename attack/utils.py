@@ -28,9 +28,9 @@ class AttackingDetails:
         return defending_squad, defend_success_probability
 
     def army_was_killed(self,
-                         squad_was_killed: bool,
-                         defending_army: ArmyABC,
-                         defending_squad: SquadABC) -> bool:
+                        squad_was_killed: bool,
+                        defending_army: ArmyABC,
+                        defending_squad: SquadABC) -> bool:
         """Checking if defending army was killed."""
         # remove squad from army.squads if killed
         if squad_was_killed:

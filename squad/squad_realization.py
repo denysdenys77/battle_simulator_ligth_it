@@ -13,7 +13,8 @@ class Squad(SquadABC):
     def attack(self) -> float:
         """Returns attack success probability of a squad."""
         units_attack_success = [unit.attack() for unit in self._units]
-        return self.geometric_helper.get_geometric_average(units_attack_success)
+        return self.geometric_helper.get_geometric_average(
+            units_attack_success)
 
     def damage(self) -> float:
         """Returns amount of damage a squad can afflict."""

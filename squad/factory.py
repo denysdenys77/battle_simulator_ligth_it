@@ -1,5 +1,5 @@
 from squad.interface import SquadABC
-from squad.squad import Squad
+from squad.squad_realization import Squad
 from warring.factory import UnitFactory
 from random import choice
 
